@@ -1,24 +1,24 @@
 /* 
-    @file   CLL_Def.c 
+    @file   CSLL_Def.c 
     @brief  Definition of Circular Linked List functions
     @author kalpesh mali
 */
 
-#include "CLL_Def.h"
+#include "CSLL_Def.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /*  Define the global tail pointer exactly once */
-CLLNODE *CLLtail = NULL;
+CSLLNODE *CSLLtail = NULL;
 
 /* Function to create a new node 
 @brief Create a new node and initialize it with user input
 @returns Pointer to the newly created node or NULL on failure
 @param void */
 
-CLLNODE * CLLcreateNode(void)
+CSLLNODE * CSLLcreateNode(void)
 {
-    CLLNODE * newnode = (CLLNODE*) malloc (sizeof(CLLNODE));
+    CSLLNODE * newnode = (CSLLNODE*) malloc (sizeof(CSLLNODE));
     if(newnode == NULL)
     {
         printf("malloc failure to create a new node\n");
@@ -39,19 +39,19 @@ CLLNODE * CLLcreateNode(void)
  *@return 1 on success, 0 if the list is empty
  *@param void */
 
-int CLLReverse(void)
+int CSLLReverse(void)
 {
-    if ( CLLtail == NULL)
+    if ( CSLLtail == NULL)
     {
         printf("CIRCULAR LINK LIST IS EMPTY\n");
         return 0;
     }
     else
     {
-        CLLNODE *head = CLLtail->next;
-        CLLNODE *current = head;
-        CLLNODE *prev = CLLtail;
-        CLLNODE *nextt = NULL;
+        CSLLNODE *head = CSLLtail->next;
+        CSLLNODE *current = head;
+        CSLLNODE *prev = CSLLtail;
+        CSLLNODE *nextt = NULL;
         do
         {
             nextt = current->next;
@@ -60,7 +60,7 @@ int CLLReverse(void)
             current = nextt;
         }while(current != head);
 
-        CLLtail = head;
+        CSLLtail = head;
         return 1;
     }
 }
@@ -69,16 +69,16 @@ int CLLReverse(void)
  *@return 1 on success, 0 if the list is empty or element not found
  *@param void */
 
-int CLLsearchElement(void)
+int CSLLsearchElement(void)
 {
-    if (CLLtail == NULL)
+    if (CSLLtail == NULL)
     {
         return 0;
     }
     int element,count = 0;
     printf("ENTER THE ELEMENT TO BE SEARCHED : ");
     scanf("%d",&element);
-    CLLNODE *trav = CLLtail->next;
+    CSLLNODE *trav = CSLLtail->next;
     do
     {
         count ++;
@@ -90,7 +90,7 @@ int CLLsearchElement(void)
         }
         trav = trav->next;
         
-    }while(trav != CLLtail->next);
+    }while(trav != CSLLtail->next);
     printf("ELEMENT NOT FOUND\n");
     return 0;
 }
@@ -100,21 +100,21 @@ int CLLsearchElement(void)
  *@return Length of the circular linked list
  *@param void */
 
-int CLLLength(void)
+int CSLLLength(void)
 {
     int count = 0;
-   if (CLLtail == NULL)
+   if (CSLLtail == NULL)
    {
        return count;
    }
    else
    {
-       CLLNODE *trav = CLLtail->next;
+       CSLLNODE *trav = CSLLtail->next;
        do
        {
            count++;
            trav = trav->next;
-       }while(trav != CLLtail->next);  
+       }while(trav != CSLLtail->next);  
    }
    return count;
 }
@@ -124,9 +124,9 @@ int CLLLength(void)
  *@return 1 on success, 0 on failure
  *@param void */
 
-int CLLaddNodePos(void)
+int CSLLaddNodePos(void)
 {
-    if(CLLtail == NULL)
+    if(CSLLtail == NULL)
     {
         printf("CIRCULAR LINK LIST IS EMPTY\n");
         return 0;
@@ -134,7 +134,7 @@ int CLLaddNodePos(void)
     else
     {
         int pos, len, i;
-        len = CLLLength();
+        len = CSLLLength();
         printf("ENTER THE POSITION TO ADD NODE (1 to %d) : ", len+1);
         scanf("%d",&pos);
         if (pos < 1 || pos > len + 1)
@@ -144,15 +144,15 @@ int CLLaddNodePos(void)
         }
         else if (pos == 1)
         {
-            CLLaddNodeFirst();
+            CSLLaddNodeFirst();
         }
         else if (pos == len + 1)
         {
-            CLLaddNodeLast();
+            CSLLaddNodeLast();
         }
         else
         {
-            CLLNODE *newNode = CLLcreateNode();
+            CSLLNODE *newNode = CSLLcreateNode();
             if (newNode == NULL)
             {
                 printf("Node not able to create\n");
@@ -160,7 +160,7 @@ int CLLaddNodePos(void)
             }
             else
             {
-                CLLNODE *trav = CLLtail->next;
+                CSLLNODE *trav = CSLLtail->next;
                 for (i = 1; i < pos - 1; i++) 
                 {
                     trav = trav->next;
@@ -178,25 +178,25 @@ int CLLaddNodePos(void)
  *@return 1 on success, 0 on failure
  *@param void */
 
-int CLLaddNodeLast(void)
+int CSLLaddNodeLast(void)
 {
-    CLLNODE *newNode = CLLcreateNode();
+    CSLLNODE *newNode = CSLLcreateNode();
     if (newNode == NULL)
     {
         printf("Node not able to create\n");
         return 0;
     }
     else 
-    {   if (CLLtail == NULL)
+    {   if (CSLLtail == NULL)
         {
-            CLLtail = newNode;
+            CSLLtail = newNode;
             newNode->next = newNode;
         }
         else
         {
-            newNode->next = CLLtail->next;
-            CLLtail->next = newNode;
-            CLLtail = newNode;
+            newNode->next = CSLLtail->next;
+            CSLLtail->next = newNode;
+            CSLLtail = newNode;
         }
     }
     return 1;
@@ -207,9 +207,9 @@ int CLLaddNodeLast(void)
  *@return 1 on success, 0 on failure
  *@param void */
 
-int CLLaddNodeFirst(void)
+int CSLLaddNodeFirst(void)
 {
-    CLLNODE *newNode = CLLcreateNode();
+    CSLLNODE *newNode = CSLLcreateNode();
     if(newNode == NULL)
     {
          printf("Node not able to create\n");
@@ -217,15 +217,15 @@ int CLLaddNodeFirst(void)
     }
     else 
     {
-        if(CLLtail == NULL)
+        if(CSLLtail == NULL)
         {
-            CLLtail = newNode;
+            CSLLtail = newNode;
             newNode->next = newNode;
         }
         else
         {
-            newNode->next = CLLtail->next;
-            CLLtail->next = newNode;
+            newNode->next = CSLLtail->next;
+            CSLLtail->next = newNode;
         }
     }
     return 1;
@@ -235,21 +235,21 @@ int CLLaddNodeFirst(void)
  *@brief Print all elements in the circular linked list
  *@param void */
 
-void CLLdisplay(void)
+void CSLLdisplay(void)
 {
-    if(CLLtail == NULL)
+    if(CSLLtail == NULL)
     {
         printf("CIRCULAR LINK LIST IS EMPTY\n");
         return;
     }
     else
     {
-        CLLNODE *trav = CLLtail->next;
+        CSLLNODE *trav = CSLLtail->next;
         do
         {
             printf("-> %d ",trav->data);
             trav = trav->next;
-        }while(trav != CLLtail->next);
+        }while(trav != CSLLtail->next);
 
         printf("\n");
     }
@@ -260,23 +260,23 @@ void CLLdisplay(void)
  *@return 1 on success, 0 if the list is empty
  *@param void */
 
-int CLLdeleteNodeFirst(void)
+int CSLLdeleteNodeFirst(void)
 {
-   if(CLLtail == NULL)
+   if(CSLLtail == NULL)
    {
        printf("CIRCULAR LINK LIST IS EMPTY\n");
        return 0;
    }
    else
    {
-       CLLNODE *temp = CLLtail->next;
-       if (CLLtail->next == CLLtail) // Only one node
+       CSLLNODE *temp = CSLLtail->next;
+       if (CSLLtail->next == CSLLtail) // Only one node
        {
-           CLLtail = NULL;
+           CSLLtail = NULL;
        }
        else
        {
-           CLLtail->next = temp->next;
+           CSLLtail->next = temp->next;
        }
        free(temp);
    }
@@ -288,32 +288,32 @@ int CLLdeleteNodeFirst(void)
  *@return 1 on success, 0 if the list is empty
  *@param void */
 
-int CLLdeleteNodeLast(void)
+int CSLLdeleteNodeLast(void)
 {
-    if(CLLtail == NULL)
+    if(CSLLtail == NULL)
     {
         printf("CIRCULAR LINK LIST IS EMPTY\n");
         return 0;
     }
     else
     {
-        CLLNODE *current = CLLtail->next;
-        CLLNODE *prev = NULL;
-        if (CLLtail->next == CLLtail) // Only one node
+        CSLLNODE *current = CSLLtail->next;
+        CSLLNODE *prev = NULL;
+        if (CSLLtail->next == CSLLtail) // Only one node
         {
-            free(CLLtail);
-            CLLtail = NULL;
+            free(CSLLtail);
+            CSLLtail = NULL;
         }
         else
         {
-            while(current->next != CLLtail->next)
+            while(current->next != CSLLtail->next)
             {
                 prev = current;
                 current = current->next;
             }
-            prev->next = CLLtail->next;
-            free(CLLtail);
-            CLLtail = prev;
+            prev->next = CSLLtail->next;
+            free(CSLLtail);
+            CSLLtail = prev;
         }
     }
     return 1;
@@ -324,9 +324,9 @@ int CLLdeleteNodeLast(void)
  *@return 1 on success, 0 on failure
  *@param void */
 
-int CLLdeleteNodePos(void)
+int CSLLdeleteNodePos(void)
 {
-    if(CLLtail == NULL)
+    if(CSLLtail == NULL)
     {
         printf("CIRCULAR LINK LIST IS EMPTY\n");
         return 0;
@@ -334,7 +334,7 @@ int CLLdeleteNodePos(void)
     else
     {
         int pos, len, i;
-        len = CLLLength();
+        len = CSLLLength();
         printf("ENTER THE POSITION TO DELETE NODE (1 to %d) : ", len);
         scanf("%d",&pos);
         if (pos < 1 || pos > len)
@@ -344,20 +344,20 @@ int CLLdeleteNodePos(void)
         }
         else if (pos == 1)
         {
-            CLLdeleteNodeFirst();
+            CSLLdeleteNodeFirst();
         }
         else if (pos == len)
         {
-            CLLdeleteNodeLast();
+            CSLLdeleteNodeLast();
         }
         else
         {
-            CLLNODE *trav = CLLtail->next;
+            CSLLNODE *trav = CSLLtail->next;
             for (i = 1; i < pos - 1; i++)
             {
                 trav = trav->next;
             }
-            CLLNODE *temp = trav->next;
+            CSLLNODE *temp = trav->next;
             trav->next = temp->next;
             free(temp);
         }

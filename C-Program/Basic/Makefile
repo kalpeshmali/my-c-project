@@ -2,14 +2,14 @@
 # Place this in: E:\Project\my-c-project\C-Program\Basic\Makefile
 
 CC := gcc
-CFLAGS := -g -O0 -std=c11 -Wall -Wextra -I. -Isingle_list -Isupport_files -Icircular_list -Idouble_list
+CFLAGS := -g -O0 -std=c11 -Wall -Wextra -I. -Isingle_list -Isupport_files -Icircular_s_list -Idouble_list
 LDFLAGS :=
 
 TARGET := cApp
 OBJDIR := obj
 
 # Source files (top-level, single_list, support_files)
-SRCS := $(wildcard *.c) $(wildcard single_list/*.c) $(wildcard support_files/*.c) $(wildcard circular_list/*.c) $(wildcard double_list/*.c)
+SRCS := $(wildcard *.c) $(wildcard single_list/*.c) $(wildcard support_files/*.c) $(wildcard circular_s_list/*.c) $(wildcard double_list/*.c)
 
 # Map sources to object paths under $(OBJDIR), preserving directories
 OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
