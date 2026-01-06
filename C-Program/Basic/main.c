@@ -5,12 +5,14 @@
 /* Header files */
 
 #include "main.h"
-#include "SLL_op.h"
 #include "mainMenu.h"
 #include "clearScreen.h"
+#include "SLL_op.h"
 #include "CSLL_op.h"
 #include "DLL_op.h"
+#include "CDLL_op.h"
 
+/* Main function
 /* @function main 
    @return integer 
    @param void */
@@ -26,10 +28,13 @@ int main (void)
             case SINGLE_LIST_OP :
                 singleLinkListOp();
                 break;
-            case CIRCULAR_LIST_OP:
+            case CIRCULAR_S_LIST_OP:
                 circularSingleLinkListOp();
                 break;
             case DOUBLE_LIST_OP:
+                doubleLinkListOp();
+                break;
+            case CIRCULAR_D_LIST_OP:
                 doubleLinkListOp();
                 break;
             default :
