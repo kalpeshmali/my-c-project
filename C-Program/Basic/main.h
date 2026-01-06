@@ -7,8 +7,9 @@
 enum mainOp
 {
     SINGLE_LIST_OP=1,           //single linked list operation
-    CIRCULAR_LIST_OP,           //circular linked list operation
-    DOUBLE_LIST_OP              //double linked list operation
+    CIRCULAR_S_LIST_OP,           //circular single linked list operation
+    DOUBLE_LIST_OP,              //double linked list operation
+    CIRCULAR_D_LIST_OP,           //circular double linked list operation
 };
 
 #endif
