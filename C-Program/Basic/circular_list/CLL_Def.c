@@ -1,9 +1,20 @@
+/* 
+    @file   CLL_Def.c 
+    @brief  Definition of Circular Linked List functions
+    @author kalpesh mali
+*/
+
 #include "CLL_Def.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-/* Define the global head exactly once */
+/*  Define the global tail pointer exactly once */
 CLLNODE *CLLtail = NULL;
+
+/* Function to create a new node 
+@brief Create a new node and initialize it with user input
+@returns Pointer to the newly created node or NULL on failure
+@param void */
 
 CLLNODE * CLLcreateNode(void)
 {
@@ -22,6 +33,11 @@ CLLNODE * CLLcreateNode(void)
         return newnode;
     }
 }
+
+/* Function to reverse the circular linked list
+ *@brief Reverse the order of nodes in the circular linked list
+ *@return 1 on success, 0 if the list is empty
+ *@param void */
 
 int CLLReverse(void)
 {
@@ -48,6 +64,11 @@ int CLLReverse(void)
         return 1;
     }
 }
+/* Function to search an element in the circular linked list
+ *@brief Search for a specific element in the circular linked list
+ *@return 1 on success, 0 if the list is empty or element not found
+ *@param void */
+
 int CLLsearchElement(void)
 {
     if (CLLtail == NULL)
@@ -73,6 +94,12 @@ int CLLsearchElement(void)
     printf("ELEMENT NOT FOUND\n");
     return 0;
 }
+
+/* Function to calculate the length of the circular linked list
+ *@brief Calculate the number of nodes in the circular linked list
+ *@return Length of the circular linked list
+ *@param void */
+
 int CLLLength(void)
 {
     int count = 0;
@@ -91,6 +118,12 @@ int CLLLength(void)
    }
    return count;
 }
+
+/* Function to add a node at a specific position in the circular linked list
+ *@brief Add a new node at the specified position in the circular linked list
+ *@return 1 on success, 0 on failure
+ *@param void */
+
 int CLLaddNodePos(void)
 {
     if(CLLtail == NULL)
@@ -139,6 +172,12 @@ int CLLaddNodePos(void)
     }
     return 1;
 }
+
+/* Function to add a node at the end of the circular linked list
+ *@brief Add a new node at the end of the circular linked list
+ *@return 1 on success, 0 on failure
+ *@param void */
+
 int CLLaddNodeLast(void)
 {
     CLLNODE *newNode = CLLcreateNode();
@@ -162,6 +201,11 @@ int CLLaddNodeLast(void)
     }
     return 1;
 }
+
+/* Function to add a node at the beginning of the circular linked list
+ *@brief Add a new node at the beginning of the circular linked list
+ *@return 1 on success, 0 on failure
+ *@param void */
 
 int CLLaddNodeFirst(void)
 {
@@ -187,6 +231,10 @@ int CLLaddNodeFirst(void)
     return 1;
 }
 
+/* Function to display the circular linked list
+ *@brief Print all elements in the circular linked list
+ *@param void */
+
 void CLLdisplay(void)
 {
     if(CLLtail == NULL)
@@ -206,6 +254,11 @@ void CLLdisplay(void)
         printf("\n");
     }
 }
+
+/* Function to delete a node from the beginning of the circular linked list
+ *@brief Delete the first node from the circular linked list
+ *@return 1 on success, 0 if the list is empty
+ *@param void */
 
 int CLLdeleteNodeFirst(void)
 {
@@ -229,6 +282,11 @@ int CLLdeleteNodeFirst(void)
    }
    return 1;
 }
+
+/* Function to delete a node from the end of the circular linked list
+ *@brief Delete the last node from the circular linked list
+ *@return 1 on success, 0 if the list is empty
+ *@param void */
 
 int CLLdeleteNodeLast(void)
 {
@@ -260,6 +318,11 @@ int CLLdeleteNodeLast(void)
     }
     return 1;
 }
+
+/* Function to delete a node from a specific position in the circular linked list
+ *@brief Delete the node at the specified position in the circular linked list
+ *@return 1 on success, 0 on failure
+ *@param void */
 
 int CLLdeleteNodePos(void)
 {

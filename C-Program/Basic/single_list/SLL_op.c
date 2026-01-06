@@ -1,7 +1,18 @@
+/* @file SLL_op.c 
+    @brief  Single Linked List operations
+    @author kalpesh mali */
+/*header files */
+
+#include <stdio.h>
 #include "SLL_op.h"
 #include "clearScreen.h"
 #include "SLL_Def.h" 
 #include "SLL_Menu.h"
+
+/* Single Linked List operations
+@fun This function performs all the operations on the single linked list
+@retuturn 1 on success, 0 on failure
+@param void */
 
 int singleLinkListOp(void)
 {
