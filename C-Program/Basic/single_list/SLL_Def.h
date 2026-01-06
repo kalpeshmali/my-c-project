@@ -1,23 +1,24 @@
 #ifndef SLL_DEF_H
 #define SLL_DEF_H
 
-typedef struct node {
+typedef struct SLLnode {
     int data;
-    struct node *next;
-} NODE;
+    struct SLLnode *next;
+} SLLNODE;
 
-NODE * createNode(void);
+SLLNODE * SLLcreateNode(void);
 
-int addNodeFirst(void);
-int addNodeLast(void);
-int addNodePos(void);
+int SLLaddNodeFirst(void);
+int SLLaddNodeLast(void);
+int SLLaddNodePos(void);
 
-int deleteNodeFirst(void);
-int deleteNodeLast(void);
-int deleteNodePos(void);
+int SLLdeleteNodeFirst(void);
+int SLLdeleteNodeLast(void);
+int SLLdeleteNodePos(void);
 
-void displayList(void);
-int linkListLength(void);
-int searchElement(void);
-int reverseLinkList(void);
+void SLLdisplayList(void);
+int SLLlinkListLength(void);
+int SLLsearchElement(void);
+int SLLreverseLinkList(void);
+
 #endif

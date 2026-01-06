@@ -1,15 +1,15 @@
 # Makefile: compile .c sources into obj/<path-to-source>.o and link executable 'main'
-# Place this in: /home/kalpesh/Programming/C-Program/Basic/Makefile
+# Place this in: E:\Project\my-c-project\C-Program\Basic\Makefile
 
 CC := gcc
-CFLAGS := -g -O0 -std=c11 -Wall -Wextra -I. -Isingle_list -Isupport_files
+CFLAGS := -g -O0 -std=c11 -Wall -Wextra -I. -Isingle_list -Isupport_files -Icircular_list
 LDFLAGS :=
 
-TARGET := main
+TARGET := cApp
 OBJDIR := obj
 
 # Source files (top-level, single_list, support_files)
-SRCS := $(wildcard *.c) $(wildcard single_list/*.c) $(wildcard support_files/*.c)
+SRCS := $(wildcard *.c) $(wildcard single_list/*.c) $(wildcard support_files/*.c) $(wildcard circular_list/*.c)
 
 # Map sources to object paths under $(OBJDIR), preserving directories
 OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
@@ -23,9 +23,8 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 # Compile: create the obj subdirectory as needed and compile
-# This rule works for top-level and nested source paths (e.g. single_list/SLL_Def.c)
 $(OBJDIR)/%.o: %.c
-	@mkdir -p $(dir $@)
+	@if not exist "$(dir $@)" mkdir "$(dir $@)"
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # Build only object files (no linking)
@@ -37,5 +36,6 @@ run: all
 	./$(TARGET)
 
 clean:
-	-rm -rf $(OBJDIR) $(TARGET)
-	@echo "Cleaned $(OBJDIR) and $(TARGET)"
+	-rd /s /q "$(OBJDIR)" 2> nul
+	-del /q "$(TARGET).exe" "$(TARGET)" 2> nul
+	@echo Cleaned $(OBJDIR) and $(TARGET)

@@ -1,10 +1,10 @@
-#include "SLL_Menu.h"
+#include "CLL_Menu.h"
 #include <stdio.h>
 
-int SLLMenu(void)
+int CLLMenu(void)
 {
     int choice;
-    printf("**************** WELCOME TO SINGLE LINK LIST OPERATION ****************\n\n");
+    printf("**************** WELCOME TO CIRCULAR LINK LIST OPERATION ****************\n");
     printf("    0.  EXIT LINK LIST OPERATION \n");
     printf("    1.  DISPLAY LINK LIST\n");
     printf("    2.  LINK LIST LENTH\n");
@@ -15,6 +15,7 @@ int SLLMenu(void)
     printf("    7.  DELETE NODE LAST  \n");
     printf("    8.  DELETE NODE POSITION  \n");
     printf("    9.  SEARCH ELEMENT\n");
+    printf("   10.  REVERSE LINK LIST\n");
     printf("ENTER YOUR CHOICE\n");
     scanf("%d",&choice);
     return choice;
