@@ -3,11 +3,11 @@
 #include <stdio.h>
 
 /* Define the global head exactly once */
-NODE *head = NULL;
+SLLNODE *head = NULL;
 
-NODE * createNode(void)
+SLLNODE * SLLcreateNode(void)
 {
-    NODE * newnode = (NODE*) malloc (sizeof(NODE));
+    SLLNODE * newnode = (SLLNODE*) malloc (sizeof(SLLNODE));
     if(newnode == NULL)
     {
         printf("malloc failure to create a new node\n");
@@ -23,7 +23,7 @@ NODE * createNode(void)
     }
 }
 
-int reverseLinkList(void)
+int SLLreverseLinkList(void)
 {
     if(head == NULL)
     {
@@ -32,9 +32,9 @@ int reverseLinkList(void)
     }
     else 
     {
-        NODE *prev = NULL;
-        NODE *curr = NULL;
-        NODE *nextt = NULL;
+        SLLNODE *prev = NULL;
+        SLLNODE *curr = NULL;
+        SLLNODE *nextt = NULL;
 
         curr = head;
 
@@ -51,7 +51,7 @@ int reverseLinkList(void)
 }
 
 
-int searchElement(void)
+int SLLsearchElement(void)
 {
     int num=0,count=1;
     if(head == NULL)
@@ -63,7 +63,7 @@ int searchElement(void)
     {
         printf("ENTER THE NUMBER FOR SEARCH :");
         scanf("%d",&num);
-        NODE *trav = head;
+        SLLNODE *trav = head;
         while(trav != NULL)
         {   
             if(trav->data == num)
@@ -77,10 +77,10 @@ int searchElement(void)
     printf("%d ELEMENT IS NOT FOUND\n",num);
     return 0;
 }
-int linkListLength(void)
+int SLLlinkListLength(void)
 {
     int length = 1;
-    NODE *trav = head;
+    SLLNODE *trav = head;
     if(trav == NULL)
     {
         printf("LINK LIST IS EMPTY");   
@@ -95,31 +95,31 @@ int linkListLength(void)
     }
     return length;
 }
-int addNodePos(void)
+int SLLaddNodePos(void)
 {
     int pos=0,count = 0;
     printf("ENTER THE POSITION : ");
     scanf("%d",&pos);
     printf("\n");
-    if(( pos >= linkListLength()) || (pos <= 0))
+    if(( pos >= SLLlinkListLength()) || (pos <= 0))
     {
         printf("POSITION INVALID\n");
         return 0;
     }
     if(pos == 1)
     {
-        return addNodeFirst();
+        return SLLaddNodeFirst();
     }
-    else if(pos == linkListLength())
+    else if(pos == SLLlinkListLength())
     {
-        return addNodeLast();
+        return SLLaddNodeLast();
     }       
     else 
     {
-        NODE *newNode = createNode();
+        SLLNODE *newNode = SLLcreateNode();
 
-        NODE *trav = head;
-        NODE *prev = trav;
+        SLLNODE *trav = head;
+        SLLNODE *prev = trav;
         while(pos != count)
         {
             prev = trav;
@@ -131,9 +131,9 @@ int addNodePos(void)
     }
     return 1;
 }
-int addNodeLast(void)
+int SLLaddNodeLast(void)
 {
-    NODE *newNode = createNode();
+    SLLNODE *newNode = SLLcreateNode();
     if(newNode == 0)
     {
         printf("Node not able to create\n");
@@ -141,7 +141,7 @@ int addNodeLast(void)
     }
     else 
     {
-        NODE *trav = head;
+        SLLNODE *trav = head;
         if(trav == NULL)
         {
             head = newNode;
@@ -158,9 +158,9 @@ int addNodeLast(void)
     }
 }
 
-int addNodeFirst(void)
+int SLLaddNodeFirst(void)
 {
-    NODE *newNode = createNode();
+    SLLNODE *newNode = SLLcreateNode();
     if(newNode == 0)
     {
         printf("Node not able to create\n");
@@ -174,9 +174,9 @@ int addNodeFirst(void)
     }
 }
 
-void displayList(void)
+void SLLdisplayList(void)
 {
-    NODE *trav = head;
+    SLLNODE *trav = head;
     if(trav == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
@@ -192,14 +192,14 @@ void displayList(void)
     }
 }
 
-int deleteNodeFirst(void)
+int SLLdeleteNodeFirst(void)
 {
     if(head == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
         return 0;
     }
-    NODE *temp = head;
+    SLLNODE *temp = head;
     head = head->next;
     
     printf("%d DELETED \n",temp->data);
@@ -208,7 +208,7 @@ int deleteNodeFirst(void)
     return 1;
 }
 
-int deleteNodeLast(void)
+int SLLdeleteNodeLast(void)
 {
     if(head == NULL)
     {
@@ -216,7 +216,7 @@ int deleteNodeLast(void)
         return 0;
     }
 
-    NODE *trav = head;
+    SLLNODE *trav = head;
 
     // If only one node
     if(trav->next == NULL)
@@ -237,7 +237,7 @@ int deleteNodeLast(void)
     return 1;
 }
 
-int deleteNodePos(void)
+int SLLdeleteNodePos(void)
 {
     if(head == NULL)
     {
@@ -247,7 +247,7 @@ int deleteNodePos(void)
 
     int pos=0;
     int count=1;
-    int lLength = linkListLength(); 
+    int lLength = SLLlinkListLength(); 
     printf("ENTER THE POSITION : ");
     if (scanf("%d", &pos) != 1)
     {   
@@ -262,16 +262,16 @@ int deleteNodePos(void)
     }
     else if(pos == 1)
     {
-        return deleteNodeFirst();
+        return SLLdeleteNodeFirst();
     }
     else if(pos ==  lLength)
     {
-        return deleteNodeLast();
+        return SLLdeleteNodeLast();
     }
     else
     {
-        NODE *trav = head;
-        NODE *prev = NULL;
+        SLLNODE *trav = head;
+        SLLNODE *prev = NULL;
         for (count = 1; count < pos; count++)
         {
             prev = trav;

@@ -8,6 +8,7 @@ int mainMenu(void)
     printf("************************** WELCOME TO C PROGRAMMING **********************************\n");
     printf("**************************************************************************************\n");
     printf("    1.SINGLE LINK LIST \n");
+    printf("    2.CIRCULAR LINK LIST \n");
     printf("ENTER YOUR CHOICE\n");
     scanf("%d",&choice);
     return choice;

@@ -2,6 +2,7 @@
 #include "SLL_op.h"
 #include "mainMenu.h"
 #include "clearScreen.h"
+#include "CLL_op.h"
 
 int main (void)
 {
@@ -13,6 +14,9 @@ int main (void)
         {
             case SINGLE_LIST_OP :
                 singleLinkListOp();
+                break;
+            case CIRCULAR_LIST_OP:
+                circularLinkListOp();
                 break;
             default :
                 printf("Invalid Choice\n");

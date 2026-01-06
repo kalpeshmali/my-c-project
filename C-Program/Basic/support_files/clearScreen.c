@@ -4,7 +4,7 @@
 
 void clearScreen(void)
 {
-    system("clear");
+    system("cls");
 }
 
 void pauseScreen(void)

@@ -6,6 +6,7 @@
 enum mainOp
 {
     SINGLE_LIST_OP=1,
+    CIRCULAR_LIST_OP
 };
 
 #endif
