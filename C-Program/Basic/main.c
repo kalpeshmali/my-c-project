@@ -1,8 +1,19 @@
+/* @file main.c 
+    @brief  Main function to run the linked list operations
+    @author kalpesh mali */
+
+/* Header files */
+
 #include "main.h"
 #include "SLL_op.h"
 #include "mainMenu.h"
 #include "clearScreen.h"
 #include "CLL_op.h"
+#include "DLL_op.h"
+
+/* @function main 
+   @return integer 
+   @param void */
 
 int main (void)
 {
@@ -16,7 +27,10 @@ int main (void)
                 singleLinkListOp();
                 break;
             case CIRCULAR_LIST_OP:
-                circularLinkListOp();
+                circularSingleLinkListOp();
+                break;
+            case DOUBLE_LIST_OP:
+                doubleLinkListOp();
                 break;
             default :
                 printf("Invalid Choice\n");

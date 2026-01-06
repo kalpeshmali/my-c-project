@@ -1,9 +1,21 @@
+/*@file CLL_op.c 
+    @brief  Circular Linked List operations
+    @author kalpesh mali 
+*/
+
+/*header files */
+#include <stdio.h>
 #include "CLL_op.h"
 #include "CLL_Def.h"
 #include "CLL_Menu.h"
 #include "clearScreen.h"
 
-int circularLinkListOp(void)
+/* Circular Linked List operations 
+@fun This function performs all the operations on the circular linked list 
+@retuturn 1 on success, 0 on failure 
+@param void */
+
+int circularSingleLinkListOp(void)
 {
     do 
     {

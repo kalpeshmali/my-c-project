@@ -1,9 +1,19 @@
+/*@file SLL_Def.c 
+    @brief  Single Linked List definitions and operations
+    @author kalpesh mali 
+*/
+/*header files*/
 #include "SLL_Def.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /* Define the global head exactly once */
-SLLNODE *head = NULL;
+SLLNODE *SLLhead = NULL;
+
+/* Create a new node 
+@fun This function creates a new node and returns a pointer to it 
+@retuturn pointer to new node on success, NULL on failure 
+@params void */
 
 SLLNODE * SLLcreateNode(void)
 {
@@ -23,9 +33,14 @@ SLLNODE * SLLcreateNode(void)
     }
 }
 
+/* Reverse the linked list
+@fun This function reverses the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLreverseLinkList(void)
 {
-    if(head == NULL)
+    if(SLLhead == NULL)
     {
         printf("LINK LIST IS EMPTY \n");
         return 0;
@@ -36,7 +51,7 @@ int SLLreverseLinkList(void)
         SLLNODE *curr = NULL;
         SLLNODE *nextt = NULL;
 
-        curr = head;
+        curr = SLLhead;
 
         while(curr != NULL)
         {
@@ -45,16 +60,19 @@ int SLLreverseLinkList(void)
             prev = curr;
             curr = nextt;
         }
-        head = prev;
+        SLLhead = prev;
         return 1;
     }
 }
-
+/* Search an element in the linked list 
+@fun This function searches for an element in the linked list
+@params void
+@return 1 if element found, 0 otherwise */
 
 int SLLsearchElement(void)
 {
     int num=0,count=1;
-    if(head == NULL)
+    if(SLLhead == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
         return 0;
@@ -63,7 +81,7 @@ int SLLsearchElement(void)
     {
         printf("ENTER THE NUMBER FOR SEARCH :");
         scanf("%d",&num);
-        SLLNODE *trav = head;
+        SLLNODE *trav = SLLhead;
         while(trav != NULL)
         {   
             if(trav->data == num)
@@ -77,10 +95,16 @@ int SLLsearchElement(void)
     printf("%d ELEMENT IS NOT FOUND\n",num);
     return 0;
 }
+
+/* Calculate the length of the linked list
+@fun This function calculates the length of the linked list
+@params void
+@return length of the linked list */
+
 int SLLlinkListLength(void)
 {
     int length = 1;
-    SLLNODE *trav = head;
+    SLLNODE *trav = SLLhead;
     if(trav == NULL)
     {
         printf("LINK LIST IS EMPTY");   
@@ -95,6 +119,12 @@ int SLLlinkListLength(void)
     }
     return length;
 }
+
+/* Add a node at a specific position in the linked list
+@fun This function adds a new node at the specified position in the linked list 
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLaddNodePos(void)
 {
     int pos=0,count = 0;
@@ -118,7 +148,7 @@ int SLLaddNodePos(void)
     {
         SLLNODE *newNode = SLLcreateNode();
 
-        SLLNODE *trav = head;
+        SLLNODE *trav = SLLhead;
         SLLNODE *prev = trav;
         while(pos != count)
         {
@@ -131,6 +161,12 @@ int SLLaddNodePos(void)
     }
     return 1;
 }
+
+/* Add a node at the end of the linked list
+@fun This function adds a new node at the end of the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLaddNodeLast(void)
 {
     SLLNODE *newNode = SLLcreateNode();
@@ -141,10 +177,10 @@ int SLLaddNodeLast(void)
     }
     else 
     {
-        SLLNODE *trav = head;
+        SLLNODE *trav = SLLhead;
         if(trav == NULL)
         {
-            head = newNode;
+            SLLhead = newNode;
         }
         else
         {
@@ -158,6 +194,11 @@ int SLLaddNodeLast(void)
     }
 }
 
+/* Add a node at the beginning of the linked list
+@fun This function adds a new node at the beginning of the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLaddNodeFirst(void)
 {
     SLLNODE *newNode = SLLcreateNode();
@@ -168,15 +209,19 @@ int SLLaddNodeFirst(void)
     }
     else
     {
-        newNode->next = head;
-        head = newNode;
+        newNode->next = SLLhead;
+        SLLhead = newNode;
         return 1;
     }
 }
+/* Display the linked list
+@fun This function displays the elements of the linked list
+@params void
+@return void */
 
 void SLLdisplayList(void)
 {
-    SLLNODE *trav = head;
+    SLLNODE *trav = SLLhead;
     if(trav == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
@@ -192,38 +237,48 @@ void SLLdisplayList(void)
     }
 }
 
+/* Delete the first node from the linked list
+@fun This function deletes the first node from the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLdeleteNodeFirst(void)
 {
-    if(head == NULL)
+    if(SLLhead == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
         return 0;
     }
-    SLLNODE *temp = head;
-    head = head->next;
-    
+    SLLNODE *temp = SLLhead;
+    SLLhead = SLLhead->next;
+
     printf("%d DELETED \n",temp->data);
     
     free(temp);
     return 1;
 }
 
+/* Delete the last node from the linked list
+@fun This function deletes the last node from the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLdeleteNodeLast(void)
 {
-    if(head == NULL)
+    if(SLLhead == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
         return 0;
     }
 
-    SLLNODE *trav = head;
+    SLLNODE *trav = SLLhead;
 
     // If only one node
     if(trav->next == NULL)
     {
         printf("%d DELETED\n", trav->data);
         free(trav);
-        head = NULL;
+        SLLhead = NULL;
         return 1;
     }
     while(trav->next->next != NULL)
@@ -237,9 +292,14 @@ int SLLdeleteNodeLast(void)
     return 1;
 }
 
+/* Delete a node at a specific position in the linked list
+@fun This function deletes a node at a specific position in the linked list
+@params void
+@return 1 on success, 0 on failure */
+
 int SLLdeleteNodePos(void)
 {
-    if(head == NULL)
+    if(SLLhead == NULL)
     {
         printf("LINK LIST IS EMPTY\n");
         return 0;
@@ -270,7 +330,7 @@ int SLLdeleteNodePos(void)
     }
     else
     {
-        SLLNODE *trav = head;
+        SLLNODE *trav = SLLhead;
         SLLNODE *prev = NULL;
         for (count = 1; count < pos; count++)
         {

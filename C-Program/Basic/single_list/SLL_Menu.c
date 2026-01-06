@@ -1,6 +1,16 @@
+/* @file SLL_Menu.c 
+    @brief  Menu for Single Linked List operations
+    @author kalpesh mali 
+*/
+/* Header files */
 #include "SLL_Menu.h"
 #include <stdio.h>
 
+/* Function to display the menu 
+   @function SLLMenu 
+   @return integer choice 
+   @param void */
+   
 int SLLMenu(void)
 {
     int choice;
