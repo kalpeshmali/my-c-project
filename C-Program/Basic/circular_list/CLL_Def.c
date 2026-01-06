@@ -54,45 +54,42 @@ int CLLsearchElement(void)
     {
         return 0;
     }
-    else
+    int element,count = 0;
+    printf("ENTER THE ELEMENT TO BE SEARCHED : ");
+    scanf("%d",&element);
+    CLLNODE *trav = CLLtail->next;
+    do
     {
-        int element,count = 0;
-        printf("ENTER THE ELEMENT TO BE SEARCHED : ");
-        scanf("%d",&element);
-        CLLNODE *trav = CLLtail->next;
-        do
+        count ++;
+        if(trav->data == element)
         {
-            count ++;
-            if(trav->data == element)
-            {
-                printf("ELEMENT FOUND AT %d POSITION\n", count);
-                
-                return 1;
-            }
-            trav = trav->next;
+            printf("ELEMENT FOUND AT %d POSITION\n", count);
             
-        }while(trav != CLLtail->next);
-        printf("ELEMENT NOT FOUND\n");
-        return 0;
-    }
+            return 1;
+        }
+        trav = trav->next;
+        
+    }while(trav != CLLtail->next);
+    printf("ELEMENT NOT FOUND\n");
+    return 0;
 }
 int CLLLength(void)
 {
+    int count = 0;
    if (CLLtail == NULL)
    {
-       return 0;
+       return count;
    }
    else
    {
-       int count = 0;
        CLLNODE *trav = CLLtail->next;
        do
        {
            count++;
            trav = trav->next;
-       }while(trav != CLLtail->next);
-       return count;
+       }while(trav != CLLtail->next);  
    }
+   return count;
 }
 int CLLaddNodePos(void)
 {
@@ -140,6 +137,7 @@ int CLLaddNodePos(void)
             }
         }
     }
+    return 1;
 }
 int CLLaddNodeLast(void)
 {
@@ -162,6 +160,7 @@ int CLLaddNodeLast(void)
             CLLtail = newNode;
         }
     }
+    return 1;
 }
 
 int CLLaddNodeFirst(void)
@@ -185,6 +184,7 @@ int CLLaddNodeFirst(void)
             CLLtail->next = newNode;
         }
     }
+    return 1;
 }
 
 void CLLdisplay(void)
@@ -227,6 +227,7 @@ int CLLdeleteNodeFirst(void)
        }
        free(temp);
    }
+   return 1;
 }
 
 int CLLdeleteNodeLast(void)
@@ -257,6 +258,7 @@ int CLLdeleteNodeLast(void)
             CLLtail = prev;
         }
     }
+    return 1;
 }
 
 int CLLdeleteNodePos(void)
@@ -297,4 +299,5 @@ int CLLdeleteNodePos(void)
             free(temp);
         }
     }
+    return 1;
 }
