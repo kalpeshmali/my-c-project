@@ -1,8 +1,8 @@
-/*@file CLL_Menu.c 
+/*@file CSLL_Menu.c 
     @brief  Menu for Circular Linked List operations
     @author kalpesh mali 
 */
-#include "CLL_Menu.h"
+#include "CSLL_Menu.h"
 #include <stdio.h>
 
 /*  Function to display the menu options  
@@ -10,7 +10,7 @@
     @return 1 on success, 0 on failure 
     @param void */
 
-int CLLMenu(void)
+int CSLLMenu(void)
 {
     int choice;
     printf("**************** WELCOME TO CIRCULAR LINK LIST OPERATION ****************\n");
